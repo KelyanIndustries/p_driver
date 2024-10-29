@@ -1,11 +1,4 @@
 local autopilot_activate = false
-Citizen.CreateThread(function()
-    while true do
-        Wait(500)
-
-        --ClearVehicleTasks(vehicle)
-    end
-end)
 
 RegisterCommand('activate_autopilot', function()
     autopilot_activate = not autopilot_activate
