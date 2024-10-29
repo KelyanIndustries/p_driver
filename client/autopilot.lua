@@ -104,4 +104,4 @@ RegisterCommand('activate_autopilot', function()
     autopilot_activate = false
 end, false)
 
-RegisterKeyMapping('~!activate_autopilot', 'Activate Autopilot', 'keyboard', 'f8')
+RegisterKeyMapping('activate_autopilot', 'Activate Autopilot', 'keyboard', 'u')

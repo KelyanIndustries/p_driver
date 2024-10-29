@@ -1,9 +1,9 @@
-local activate_regulator = false
-RegisterCommand("activate_regulator", function()
+local activate_limitator = false
+RegisterCommand("activate_limitator", function()
     local ped = PlayerPedId()
     local vehicle = GetVehiclePedIsUsing(ped)
     local speed = 0.0
-    activate_regulator = not activate_regulator
+    activate_limitator = not activate_limitator
     if not IsPedInVehicle(ped, vehicle, false) then
         lib.notify({
             id = 'no_vehicle',
@@ -18,27 +18,26 @@ RegisterCommand("activate_regulator", function()
     end
 
     lib.notify({
-        id = 'activate_regulator',
-        title = 'Regulator activated',
-        description = 'The regulator is now activated, you can now relax',
+        id = 'activate_limitator',
+        title = 'limitator activated',
+        description = 'The limitator is now activated, you can now relax',
         showDuration = true,
         position = 'top',
         icon = 'check',
         iconColor = '#2ECC71'
     })
     speed = GetEntitySpeed(vehicle)
-    while activate_regulator do
+    while activate_limitator do
         Wait(0)
-
-        SetVehicleForwardSpeed(vehicle, speed)
+        SetEntityMaxSpeed(vehicle, speed)
 
         if IsControlPressed(0, 72) then
             SetEntityMaxSpeed(vehicle, 999.9)
-            activate_regulator = false
+            activate_limitator = false
             lib.notify({
-                id = 'deactivate_regulator',
-                title = 'Regulator deactivated',
-                description = 'The regulator is now deactivated',
+                id = 'deactivate_limitator',
+                title = 'limitator deactivated',
+                description = 'The limitator is now deactivated',
                 showDuration = true,
                 position = 'top',
                 icon = 'check',
@@ -52,4 +51,4 @@ RegisterCommand("activate_regulator", function()
     ::clear::
 end, false)
 
-RegisterKeyMapping('activate_regulator', 'Activate the regulator', 'keyboard', 'k')
+RegisterKeyMapping('activate_limitator', 'Activate the limitator', 'keyboard', 'k')

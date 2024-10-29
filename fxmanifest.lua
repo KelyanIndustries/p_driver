@@ -9,7 +9,7 @@ lua54 "yes"
 
 client_scripts {
   "client/autopilot.lua",
-  "client/regulator.lua",
+  "client/limitator.lua",
 }
 
 server_scripts {
